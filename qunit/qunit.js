@@ -390,7 +390,13 @@ extend(QUnit, {
 
 		if ( !tests && !banner && !result ) {
 			var container = document.createElement('div');
-			container.innerHTML = '<h1 id="qunit-header">QUnit Test Suite</h1><h2 id="qunit-banner"></h2><div id="qunit-testrunner-toolbar"></div><h2 id="qunit-userAgent"></h2><ol id="qunit-tests"></ol>';
+			var title = document.getElementsByTagName('title')[0];
+			if (title) {
+				title = title.innerHTML;
+			} else {
+				title = "Tests";
+			}
+			container.innerHTML = '<h1 id="qunit-header">' + title + '</h1><h2 id="qunit-banner"></h2><div id="qunit-testrunner-toolbar"></div><h2 id="qunit-userAgent"></h2><ol id="qunit-tests"></ol>';
 			document.body.insertBefore(container, document.body.firstChild);
 			tests = id("qunit-tests");
 			banner = id("qunit-banner");
